@@ -1,12 +1,19 @@
 "use client"
 
+import { useState, useEffect } from 'react'
 import { Canvas, useFrame } from "@react-three/fiber"
 import { Float, useScroll, useTexture, ScrollControls, Scroll } from "@react-three/drei"
 import { motion } from "framer-motion" 
 import * as THREE from 'three'
-import { useRef, useEffect, useState } from 'react'
+import { useRef } from 'react'
 import { useSpring, a } from '@react-spring/three'
 import './styles.css'
+import ContactForm from '../section/ContactForm'
+import TestimonialsSlider from '../section/TestimonialsSlider'
+import PremiumFAQ from '../section/PremiumFAQ'
+import PremiumCTA from '../section/CTA'
+import AnimatedBlogSection from '../section/BlogSec'
+import TeamSection from '../section/TeamSec'
 
 const teamMembers = [
   { name: "Shruti Sinha", role: "Founder & CEO", img: "/sayam.jpeg" },
@@ -88,25 +95,31 @@ function TeamScene() {
 }
 
 export default function Overlay() {
-  const [isMounted, setIsMounted] = useState(false)
-  const [webGLAvailable, setWebGLAvailable] = useState(true)
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // Close menu when clicking outside
   useEffect(() => {
-    setIsMounted(true)
-    
-    // Check if WebGL is available
-    try {
-      const canvas = document.createElement('canvas')
-      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl')
-      if (!gl) {
-        setWebGLAvailable(false)
-        document.body.classList.add('no-webgl')
+    const handleClickOutside = (event) => {
+      const navMenu = document.querySelector('.nav-menu');
+      const hamburger = document.querySelector('.hamburger');
+      
+      if (isMenuOpen && 
+          !navMenu.contains(event.target) && 
+          !hamburger.contains(event.target)) {
+        setIsMenuOpen(false);
       }
-    } catch (e) {
-      setWebGLAvailable(false)
-      document.body.classList.add('no-webgl')
-    }
-  }, [])
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
+  // Toggle menu function
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <div className="container">
@@ -117,17 +130,30 @@ export default function Overlay() {
             DIGITAL <strong>EXPOSURE</strong>
           </p>
         </div>
-        <div>
-          <ul>
-            <li>Learn</li>
-            <li>Numbers</li>
-            <li>Engage</li>
-          </ul>
-        </div>
-        <button>KNOW MORE</button>
+        
+        {/* Hamburger Menu Button */}
+        <button className="hamburger" onClick={toggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        
+        {/* Navigation Menu */}
+        <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+          <li>Learn</li>
+          <li>Numbers</li>
+          <li>Engage</li>
+          <li>Services</li>
+          <li>About</li>
+        </ul>
+        
+        <button className="cta-button">KNOW MORE</button>
       </header>
+      
+      {/* Overlay for mobile menu */}
+      <div className={`menu-overlay ${isMenuOpen ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}></div>
 
-      <div className="main-wrapper">
+        <div className="main-wrapper">
         <section className="section section-1">
           <div className="wrapper">
             <h2>
@@ -366,6 +392,45 @@ export default function Overlay() {
                 </div>
             </section>
 
+
+            <TestimonialsSlider />
+            <PremiumFAQ />
+            <PremiumCTA />
+
+            
+{/* Team Section */}
+
+<TeamSection />
+
+{/* Contact Section */}
+<section className="section section-contact">
+  <div className="contact-wrapper">
+    <div className="contact-content">
+      <h2>
+        Get In <strong>Touch</strong>
+      </h2>
+      <p>
+        Ready to transform your digital presence? Contact us today for a free consultation 
+        and let's discuss how we can help your business grow.
+      </p>
+      <div className="contact-info">
+        <div className="contact-item">
+          <img src="/phone.png" width={20} alt="Phone" />
+          <span>+91 9330270619</span>
+        </div>
+        <div className="contact-item">
+          <img src="/email.png" width={20} alt="Email" />
+          <span>info@deos.dev</span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="contact-form">
+      <ContactForm />
+    </div>
+  </div>
+</section>
+
             {/* <section class="section section-3">
                 <div class="card-wrapper">
                     <div class="card">
@@ -386,6 +451,7 @@ export default function Overlay() {
                     </p>
                 </div>
             </section> */}
+            <AnimatedBlogSection />
 
       </div>
 

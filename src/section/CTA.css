@@ -1,0 +1,236 @@
+/* components/PremiumCTA.css */
+.section-cta {
+  padding: 6em 1em;
+  background: linear-gradient(135deg, 
+    rgba(117, 59, 108, 0.03) 0%, 
+    rgba(146, 35, 146, 0.05) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(117, 59, 108, 0.2), 
+    transparent);
+}
+
+.section-cta::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(117, 59, 108, 0.2), 
+    transparent);
+}
+
+.cta-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cta-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.cta-content h2 {
+  font-size: 2.8em;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #753b6c;
+  background: linear-gradient(135deg, #753b6c 0%, #922392 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cta-content p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: #5a2d54;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+.cta-features {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.feature-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #753b6c 0%, #922392 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.feature span {
+  color: #5a2d54;
+  font-weight: 400;
+}
+
+.cta-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(117, 59, 108, 0.1);
+  border-radius: 25px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 15px 40px rgba(117, 59, 108, 0.1);
+}
+
+.cta-card h3 {
+  font-size: 1.8em;
+  color: #753b6c;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.cta-card p {
+  color: #5a2d54;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+.cta-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid rgba(117, 59, 108, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 1em;
+  color: #5a2d54;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #753b6c;
+  box-shadow: 0 0 0 3px rgba(117, 59, 108, 0.1);
+}
+
+.form-group input::placeholder {
+  color: rgba(117, 59, 108, 0.5);
+}
+
+.cta-submit-btn {
+  background: linear-gradient(135deg, #753b6c 0%, #922392 100%);
+  border: none;
+  padding: 18px 30px;
+  border-radius: 12px;
+  font-size: 1.1em;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(117, 59, 108, 0.3);
+  margin-top: 10px;
+}
+
+.cta-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(117, 59, 108, 0.4);
+}
+
+.cta-assurance {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(117, 59, 108, 0.1);
+}
+
+.assurance-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9em;
+  color: #5a2d54;
+}
+
+.assurance-icon {
+  font-size: 1.2em;
+}
+
+/* Media Queries */
+@media (max-width: 968px) {
+  .cta-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .cta-content h2 {
+    font-size: 2.2em;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-cta {
+    padding: 4em 1em;
+  }
+  
+  .cta-card {
+    padding: 30px 25px;
+  }
+  
+  .cta-assurance {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .cta-content h2 {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-content h2 {
+    font-size: 1.8em;
+  }
+  
+  .cta-card h3 {
+    font-size: 1.5em;
+  }
+  
+  .cta-content p {
+    font-size: 1.1em;
+  }
+}

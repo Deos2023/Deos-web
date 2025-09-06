@@ -17,19 +17,19 @@ const B2BBusinessSection = () => {
       stats: "89% increase in qualified leads"
     },
     {
-      icon: "/icons/b2b-brand.mp4",
+      icon: "/icons/brand.mp4",
       title: "Brand Authority",
       description: "Establish your business as an industry thought leader and trusted partner",
       stats: "3x more brand recognition"
     },
     {
-      icon: "/icons/b2b-roi.mp4",
+      icon: "/icons/investment.mp4",
       title: "ROI Focused",
       description: "Data-driven campaigns designed to deliver measurable return on investment",
       stats: "47% higher ROI than industry average"
     },
     {
-      icon: "/icons/b2b-partnership.mp4",
+      icon: "/icons/profit.mp4",
       title: "Partnership Growth",
       description: "Build lasting business relationships that drive mutual growth and success",
       stats: "72% client retention rate"

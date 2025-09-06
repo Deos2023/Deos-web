@@ -1,9 +1,9 @@
 /* components/AnimatedBlogSection.css */
 .section-blog {
   padding: 6em 1em;
-  background: linear-gradient(135deg, 
+  /* background: linear-gradient(135deg, 
     rgba(255, 255, 255, 0.97) 0%, 
-    rgba(250, 245, 252, 0.98) 100%);
+    rgba(250, 245, 252, 0.98) 100%); */
   position: relative;
   overflow: hidden;
   margin-bottom: 50px;

@@ -14,6 +14,8 @@ import PremiumFAQ from '../section/PremiumFAQ'
 import PremiumCTA from '../section/CTA'
 import AnimatedBlogSection from '../section/BlogSec'
 import TeamSection from '../section/TeamSec'
+import ServicesSection from '../section/ServicesSection'
+import B2BBusinessSection from '../section/B2BBusinessSection'
 
 const teamMembers = [
   { name: "Shruti Sinha", role: "Founder & CEO", img: "/sayam.jpeg" },
@@ -189,118 +191,7 @@ export default function Overlay() {
             </ul>
           </div>
         </section>
-<section className="section section-services">
-  <div className="services-wrapper">
-    <h2>
-      Our <strong>Comprehensive</strong> Services
-    </h2>
-    <p className="services-intro">
-      We offer end-to-end digital solutions designed to elevate your brand, 
-      engage your audience, and drive measurable results in today's competitive landscape.
-    </p>
-    
-    <div className="services-grid">
-      <div className="service-card">
-        <h3>Website Development</h3>
-        <p>
-          A business website helps accomplish several digital marketing strategies that enable 
-          a company to grow. Visualize your business based on your online presence with a robust 
-          website that communicates quality information to viewers.
-        </p>
-        <ul>
-          <li>Improves credibility and generates leads</li>
-          <li>Provides quality customer experience</li>
-          <li>Well-designed with updated content</li>
-          <li>State-of-the-art website design</li>
-        </ul>
-      </div>
-      
-      <div className="service-card">
-        <h3>Search Engine Optimization (SEO)</h3>
-        <p>
-          SEO is a continuous process of optimizing a website to be more relevant and reachable 
-          for search engines and users, thereby driving more organic traffic and enhancing online visibility.
-        </p>
-        <ul>
-          <li>On-page, off-page, technical and local SEO</li>
-          <li>Keyword research and link building</li>
-          <li>Higher ranking and effective brand awareness</li>
-          <li>Continuous optimization process</li>
-        </ul>
-      </div>
-      
-      <div className="service-card">
-        <h3>Local SEO (Google My Business)</h3>
-        <p>
-          Get your business to rank as high as possible in Google Maps and on the local results 
-          of the SERP with our specialized local SEO services.
-        </p>
-        <ul>
-          <li>Google Business Profile optimization</li>
-          <li>Review management and listing optimization</li>
-          <li>Local search visibility enhancement</li>
-          <li>Map ranking improvement</li>
-        </ul>
-      </div>
-      
-      <div className="service-card">
-        <h3>Social Media Marketing (SMM)</h3>
-        <p>
-          A powerful way for businesses of all sizes to reach prospects and customers in a focused manner. 
-          SMM has become an essential component of any successful marketing strategy.
-        </p>
-        <ul>
-          <li>Increased brand awareness</li>
-          <li>Improved customer engagement</li>
-          <li>Enhanced website traffic</li>
-          <li>Cost-effective marketing across platforms</li>
-        </ul>
-      </div>
-      
-      <div className="service-card">
-        <h3>Communication Strategy</h3>
-        <p>
-          Effective communication is the key differentiator in building a brand or enhancing 
-          reach and growth of an organization through appropriate cues to get the desired response.
-        </p>
-        <ul>
-          <li>SEO synergistic content creation</li>
-          <li>Static and audio-visual advertisements</li>
-          <li>Proper keyword implementation</li>
-          <li>Creative cue design for desired responses</li>
-        </ul>
-      </div>
-      
-      <div className="service-card">
-        <h3>Brand Strategy & Management</h3>
-        <p>
-          Building and managing brands with effective strategies that create a unique consumer response, 
-          transforming brands into trust marks with enhanced value.
-        </p>
-        <ul>
-          <li>Research-based strategy development</li>
-          <li>Analytics-driven brand management</li>
-          <li>Competitive advantage creation</li>
-          <li>Enhanced brand value development</li>
-        </ul>
-      </div>
-      
-      <div className="service-card">
-        <h3>App Development</h3>
-        <p>
-          Today many businesses use specific applications to manage customer convenience or requirements. 
-          We develop appropriate apps to address specific business needs.
-        </p>
-        <ul>
-          <li>Custom application development</li>
-          <li>Cross-platform solutions</li>
-          <li>Better customer experience delivery</li>
-          <li>Business-specific functionality</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+ <ServicesSection />
 
         <section className="section section-3">
           <div className="card-wrapper">
@@ -358,6 +249,10 @@ export default function Overlay() {
             </p>
           </div>
         </section>
+
+
+<B2BBusinessSection />
+
 
 
            <section class="section section-why">

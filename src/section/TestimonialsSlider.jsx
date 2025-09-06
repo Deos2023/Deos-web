@@ -16,35 +16,35 @@ const TestimonialsSlider = () => {
       text: "Digital Exposure transformed our online presence completely. Our website traffic increased by 200% within just 3 months of working with them. Highly recommended!",
       author: "Rajesh Kumar",
       role: "CEO, TechInnovate Solutions",
-      image: "/client1.jpg"
+      image: "/testimonials/p1.png"
     },
     {
       id: 2,
       text: "The SEO strategy implemented by DEOS took our business to the first page of Google for all our key keywords. Their team is professional and results-driven.",
       author: "Priya Sharma",
       role: "Marketing Director, FashionHub",
-      image: "/client2.jpg"
+      image: "/testimonials/p3.png"
     },
     {
       id: 3,
       text: "Exceptional service! The social media campaign they created generated over 5000 qualified leads for our startup. Their creativity and execution are top-notch.",
       author: "Michael Chen",
       role: "Founder, HealthTech Startup",
-      image: "/client3.jpg"
+      image: "/testimonials/p4.png"
     },
     {
       id: 4,
       text: "The website they developed for us is not only beautiful but also highly functional. Our conversion rates improved by 150% after the redesign.",
       author: "Sarah Johnson",
       role: "Owner, Boutique Retail Store",
-      image: "/client4.jpg"
+      image: "/testimonials/p5.png"
     },
     {
       id: 5,
       text: "Working with DEOS has been a game-changer for our brand. Their comprehensive digital marketing strategy delivered measurable ROI from day one.",
       author: "David Brown",
       role: "COO, Manufacturing Company",
-      image: "/client5.jpg"
+      image: "/testimonials/p6.png"
     }
   ]
 

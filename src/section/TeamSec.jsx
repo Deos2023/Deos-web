@@ -27,7 +27,7 @@ const TeamSection = () => {
       id: 1,
       name: "Sayam Sinha Ray",
       role: "Founder & CEO",
-      desc: "Digital strategist with 10+ years of experience in transforming businesses through technology.",
+      desc: "Digital strategist with 15+ years of experience in transforming businesses through technology.",
       img: "/sayam.jpeg"
     },
     {
@@ -37,13 +37,14 @@ const TeamSection = () => {
       desc: "Business development expert specializing in growth strategies and client relationships.",
       img: "/puja.jpg"
     },
-    {
-      id: 3,
-      name: "Rima Saha ",
-      role: "Branch Manager",
-      desc: "Creative designer with a passion for creating intuitive and beautiful user experiences.",
-      img: "/team3.jpg"
-    },
+{
+  id: 3,
+  name: "Rima Saha",
+  role: "Branch Manager",
+  desc: "An experienced Branch Manager with strong leadership and organizational skills.",
+  img: "/team3.jpg"
+},
+
     {
       id: 4,
       name: "Jane Smith",
@@ -58,41 +59,7 @@ const TeamSection = () => {
       desc: "SEO guru who specializes in driving organic traffic and improving search engine rankings.",
       img: "/team5.jpg"
     },
-    {
-      id: 6,
-      name: "Sarah Wilson",
-      role: "Content Writer",
-      desc: "Creative writer crafting compelling content that engages audiences and drives conversions.",
-      img: "/team6.jpg"
-    },
-    {
-      id: 7,
-      name: "David Chen",
-      role: "Fullstack Developer",
-      desc: "Technical expert specializing in building robust and scalable web applications.",
-      img: "/team7.jpg"
-    },
-    {
-      id: 8,
-      name: "Emily Rodriguez",
-      role: "Social Media Manager",
-      desc: "Social media strategist creating engaging content and building strong online communities.",
-      img: "/team8.jpg"
-    },
-    {
-      id: 9,
-      name: "Alex Turner",
-      role: "Project Manager",
-      desc: "Experienced project manager ensuring timely delivery and client satisfaction.",
-      img: "/team9.jpg"
-    },
-    {
-      id: 10,
-      name: "Lisa Wang",
-      role: "Data Analyst",
-      desc: "Data-driven analyst providing insights to optimize digital marketing strategies.",
-      img: "/team10.jpg"
-    }
+    
   ]
 
   const containerVariants = {

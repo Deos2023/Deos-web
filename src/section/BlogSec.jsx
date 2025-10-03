@@ -1,7 +1,7 @@
 // components/AnimatedBlogSection.jsx
 "use client"
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import './BlogSec.css'
 
@@ -10,9 +10,6 @@ const AnimatedBlogSection = () => {
   const containerRef = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.3 })
   
-  const [scrollDirection, setScrollDirection] = useState('down')
-  const [lastScrollY, setLastScrollY] = useState(0)
-  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -20,22 +17,6 @@ const AnimatedBlogSection = () => {
   
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [50, 0, 0, -50])
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY
-      const direction = scrollY > lastScrollY ? 'down' : 'up'
-      
-      if (direction !== scrollDirection && Math.abs(scrollY - lastScrollY) > 10) {
-        setScrollDirection(direction)
-      }
-      
-      setLastScrollY(scrollY > 0 ? scrollY : 0)
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [lastScrollY, scrollDirection])
 
   const blogPosts = [
     {
@@ -102,13 +83,6 @@ const AnimatedBlogSection = () => {
         staggerChildren: 0.15,
         delayChildren: 0.2
       }
-    },
-    exit: {
-      opacity: 0,
-      transition: {
-        staggerChildren: 0.05,
-        staggerDirection: -1
-      }
     }
   }
 
@@ -125,15 +99,6 @@ const AnimatedBlogSection = () => {
       transition: {
         duration: 0.7,
         ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    },
-    exit: {
-      opacity: 0,
-      y: -30,
-      filter: "blur(10px)",
-      transition: {
-        duration: 0.5,
-        ease: "easeIn"
       }
     }
   }
@@ -180,7 +145,7 @@ const AnimatedBlogSection = () => {
           className="blog-grid"
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : scrollDirection === 'down' ? "hidden" : "exit"}
+          animate={isInView ? "visible" : "hidden"}
         >
           {blogPosts.map((post) => (
             <motion.article 

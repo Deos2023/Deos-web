@@ -22,7 +22,7 @@ import CameraRig from './CameraRig'
 import CameraAnimation from './CameraAnimation'
 
 function LogoModel(props) {
-  const { scene } = useGLTF('/logo2.glb') // 👈 keep logo.glb inside /public
+  const { scene } = useGLTF('/logo4.glb') // 👈 keep logo.glb inside /public
   return <primitive object={scene} {...props} />
 }
 

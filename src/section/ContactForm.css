@@ -1,6 +1,8 @@
 /* components/ContactForm.css */
 .contact-form-container {
   width: 100%;
+  position: relative;
+  z-index: 10; /* Ensure it's above other elements */
 }
 
 .animated-contact-form {
@@ -10,6 +12,8 @@
   backdrop-filter: blur(10px);
   box-shadow: 0 15px 40px rgba(117, 59, 108, 0.1);
   border: 1px solid rgba(117, 59, 108, 0.1);
+  position: relative;
+  z-index: 10;
 }
 
 .form-group {
@@ -29,6 +33,18 @@
   color: #5a2d54;
   transition: all 0.3s ease;
   resize: vertical;
+  /* Ensure inputs are clickable */
+  pointer-events: auto !important;
+  cursor: text !important;
+  /* Remove any disabled styles */
+  opacity: 1 !important;
+}
+
+/* Remove any potential disabled states */
+.form-group input:not(:disabled),
+.form-group textarea:not(:disabled) {
+  pointer-events: auto;
+  cursor: text;
 }
 
 .form-group input:focus,
@@ -68,21 +84,30 @@
   box-shadow: 0 5px 20px rgba(117, 59, 108, 0.3);
   position: relative;
   overflow: hidden;
+  /* Ensure button is clickable */
+  pointer-events: auto !important;
 }
 
-.submit-btn:hover {
+.submit-btn:hover:not(:disabled) {
   box-shadow: 0 8px 25px rgba(117, 59, 108, 0.4);
+  transform: translateY(-2px);
 }
 
-.submit-btn:active {
+.submit-btn:active:not(:disabled) {
   transform: scale(0.98);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
 }
 
 .submit-btn svg {
   transition: transform 0.3s ease;
 }
 
-.submit-btn:hover svg {
+.submit-btn:hover:not(:disabled) svg {
   transform: translateX(3px);
 }
 
@@ -131,10 +156,24 @@
   }
 }
 
-/* Focus labels animation */
-.form-group:focus-within label {
-  transform: translateY(-25px) scale(0.85);
-  color: #753b6c;
+/* Error states */
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  display: block;
+  font-weight: 400;
+}
+
+/* Ensure no overlays are blocking the form */
+.contact-form-container * {
+  pointer-events: auto;
 }
 
 /* Media Queries */
@@ -146,6 +185,7 @@
   .form-group input,
   .form-group textarea {
     padding: 14px 16px;
+    font-size: 16px; /* Prevent zoom on iOS */
   }
   
   .submit-btn {
@@ -157,6 +197,7 @@
 @media (max-width: 480px) {
   .animated-contact-form {
     padding: 20px 15px;
+    margin: 10px;
   }
   
   .form-group input,

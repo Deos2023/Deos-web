@@ -1,6 +1,6 @@
 // components/ContactForm.jsx
 "use client"
-
+import React from 'react'
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import './ContactForm.css'

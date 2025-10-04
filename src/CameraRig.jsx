@@ -1,6 +1,7 @@
 import { useFrame } from '@react-three/fiber'
 import { easing } from 'maath'
 import { useRef } from 'react'
+import React from 'react'
 
 export default function CameraRig({ children }) {
   const groupRef = useRef()

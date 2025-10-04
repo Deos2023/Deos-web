@@ -1,6 +1,6 @@
 // components/TeamSection.jsx
 "use client"
-
+import React from 'react'
 import { useRef, useState, useEffect } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import './TeamSec.css'

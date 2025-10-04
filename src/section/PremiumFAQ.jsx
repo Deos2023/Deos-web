@@ -1,14 +1,12 @@
 // components/PremiumFAQ.jsx
 "use client"
-
-import { useState, useRef } from 'react'
-import { motion, AnimatePresence, useInView } from 'framer-motion'
+import React from 'react'
+import { useState } from 'react'
 import './PremiumFAQ.css'
+import { Plus, ArrowUp } from 'lucide-react';
 
 const PremiumFAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null)
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
 
   const faqItems = [
     {
@@ -46,128 +44,51 @@ const PremiumFAQ = () => {
   ]
 
   const toggleFAQ = (index) => {
+    console.log('Clicked index:', index)
     setActiveIndex(activeIndex === index ? null : index)
   }
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 20,
-      filter: "blur(10px)"
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    }
-  }
-
-  const answerVariants = {
-    hidden: { 
-      opacity: 0,
-      height: 0,
-      transition: {
-        duration: 0.4,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    },
-    visible: { 
-      opacity: 1,
-      height: "auto",
-      transition: {
-        duration: 0.5,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    }
-  }
-
   return (
-    <section className="section section-faq" ref={ref}>
+    <section className="section section-faq">
       <div className="faq-wrapper">
-        <motion.div 
-          className="faq-header"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          <h2>
-            Frequently Asked <strong>Questions</strong>
+        <div className="faq-header">
+          <h2 className="faq-title">
+            Frequently Asked <strong className="faq-title-accent">Questions</strong>
           </h2>
           <p className="faq-subtitle">
             Get answers to the most common questions about our digital marketing services
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          className="faq-container"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
+        <div className="faq-container">
           {faqItems.map((item, index) => (
-            <motion.div 
-              key={index} 
-              className={`faq-item ${activeIndex === index ? 'active' : ''}`}
-              variants={itemVariants}
-            >
-              <div 
+            <div key={index} className="faq-item">
+              <div
                 className="faq-question"
                 onClick={() => toggleFAQ(index)}
               >
-                <h3>{item.question}</h3>
-                <motion.div 
-                  className="faq-icon"
-                  animate={{ rotate: activeIndex === index ? 45 : 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  <span>+</span>
-                </motion.div>
+                <h3 className="faq-question-text">{item.question}</h3>
+                <div className={`faq-icon ${activeIndex === index ? 'active' : ''}`}>
+                  <span className="faq-icon-plus">
+                    {activeIndex === index ? <ArrowUp size={20} /> : <Plus size={20} />}
+                  </span>
+                </div>
               </div>
               
-              <AnimatePresence>
-                {activeIndex === index && (
-                  <motion.div 
-                    className="faq-answer"
-                    initial="hidden"
-                    animate="visible"
-                    exit="hidden"
-                    variants={answerVariants}
-                  >
-                    <div className="answer-content">
-                      <p>{item.answer}</p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+              <div className={`faq-answer ${activeIndex === index ? 'active' : ''}`}>
+                <div className="answer-content">
+                  <p className="faq-answer-text">{item.answer}</p>
+                </div>
+              </div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div 
-          className="faq-cta"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
-        >
-          <h3>Still have questions?</h3>
-          <p>Contact us for more information about our services</p>
-          <button className="faq-contact-btn">Get in Touch</button>
-        </motion.div>
+        <div className="faq-cta">
+          <h3 className="faq-cta-title">Still have questions?</h3>
+          <p className="faq-cta-subtitle">Contact us for more information about our services</p>
+          <button className="faq-contact-btn"><a href="#contact">Get in Touch</a></button>
+        </div>
       </div>
     </section>
   )

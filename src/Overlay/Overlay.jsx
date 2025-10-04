@@ -1,5 +1,5 @@
 "use client"
-
+import React from 'react'
 import { useState, useEffect } from 'react'
 import { Canvas, useFrame } from "@react-three/fiber"
 import { Float, useScroll, useTexture, ScrollControls, Scroll } from "@react-three/drei"
@@ -227,7 +227,7 @@ export default function Overlay() {
           </li>
         </ul>
 
-        <button className="cta-button">KNOW MORE</button>
+        <button className="cta-button" ><a href="#contact" style={{ textDecoration: "none" }}>KNOW MORE</a></button>
       </header>
 
       {/* Overlay for mobile menu */}

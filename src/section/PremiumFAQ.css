@@ -1,40 +1,13 @@
 /* components/PremiumFAQ.css */
 .section-faq {
-  align-items: flex-start;
   padding: 6em 1em;
-  height: auto;
   min-height: 100vh;
-  /* background: linear-gradient(135deg, 
+  background: linear-gradient(135deg, 
     rgba(255, 255, 255, 0.95) 0%, 
-    rgba(245, 240, 247, 0.98) 100%); */
+    rgba(245, 240, 247, 0.98) 100%);
   position: relative;
-  overflow: hidden;
-}
-
-.section-faq::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(117, 59, 108, 0.3), 
-    transparent);
-}
-
-.section-faq::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(117, 59, 108, 0.3), 
-    transparent);
+  z-index: 10;
+  pointer-events: auto !important; /* Ensure clicks work */
 }
 
 .faq-wrapper {
@@ -43,35 +16,7 @@
   margin: 0 auto;
   position: relative;
   z-index: 2;
-}
-
-.faq-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.faq-header h2 {
-  font-size: 3em;
-  font-weight: 200;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  line-height: 1.1em;
-  margin-bottom: 20px;
-  color: rgba(117, 59, 108, 0.9);
-  background: linear-gradient(135deg, #753b6c 0%, #922392 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.faq-subtitle {
-  font-size: 1.2em;
-  font-family: 'Roboto Flex', sans-serif;
-  font-weight: 300;
-  line-height: 1.6em;
-  color: #5a2d54;
-  max-width: 600px;
-  margin: 0 auto;
+  pointer-events: auto;
 }
 
 .faq-container {
@@ -79,6 +24,7 @@
   flex-direction: column;
   gap: 15px;
   margin-bottom: 60px;
+  pointer-events: auto;
 }
 
 .faq-item {
@@ -86,21 +32,9 @@
   border: 1px solid rgba(117, 59, 108, 0.1);
   border-radius: 20px;
   padding: 0;
-  backdrop-filter: blur(10px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 5px 25px rgba(117, 59, 108, 0.08);
   overflow: hidden;
-}
-
-.faq-item:hover {
-  border-color: rgba(117, 59, 108, 0.2);
-  box-shadow: 0 10px 35px rgba(117, 59, 108, 0.15);
-  transform: translateY(-2px);
-}
-
-.faq-item.active {
-  border-color: rgba(117, 59, 108, 0.3);
-  box-shadow: 0 15px 40px rgba(117, 59, 108, 0.2);
+  pointer-events: auto;
 }
 
 .faq-question {
@@ -108,15 +42,19 @@
   justify-content: space-between;
   align-items: center;
   padding: 25px 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  cursor: pointer !important;
+  user-select: none;
+  background: rgba(255, 255, 255, 0.95);
+  transition: background-color 0.3s ease;
+  pointer-events: auto !important;
 }
 
+/* Rest of your existing PremiumFAQ CSS remains the same */
 .faq-question:hover {
   background: rgba(117, 59, 108, 0.02);
 }
 
-.faq-question h3 {
+.faq-question-text {
   font-size: 1.1em;
   font-weight: 500;
   color: #753b6c;
@@ -134,31 +72,44 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease;
+  pointer-events: none; /* Let parent handle clicks */
 }
 
-.faq-icon span {
+.faq-icon.active {
+  transform: rotate(45deg);
+}
+
+.faq-icon-plus {
   font-size: 1.8em;
   font-weight: 300;
   color: #753b6c;
-  transition: all 0.3s ease;
+  line-height: 1;
+  display: block;
 }
 
 .faq-answer {
+  max-height: 0;
   overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.faq-answer.active {
+  max-height: 1000px;
 }
 
 .answer-content {
-  padding: 0 30px 30px 30px;
+  padding: 0 30px;
 }
 
-.answer-content p {
+.faq-answer-text {
   font-family: 'Roboto Flex', sans-serif;
   font-weight: 300;
   line-height: 1.8em;
   color: #5a2d54;
   margin: 0;
   font-size: 1em;
-  padding-left: 20px;
+  padding: 0 0 30px 20px;
   border-left: 3px solid rgba(117, 59, 108, 0.2);
 }
 
@@ -169,18 +120,18 @@
     rgba(117, 59, 108, 0.05) 0%, 
     rgba(146, 35, 146, 0.05) 100%);
   border-radius: 25px;
-  backdrop-filter: blur(10px);
   border: 1px solid rgba(117, 59, 108, 0.1);
+  pointer-events: auto;
 }
 
-.faq-cta h3 {
+.faq-cta-title {
   font-size: 1.8em;
   font-weight: 400;
   color: #753b6c;
   margin-bottom: 10px;
 }
 
-.faq-cta p {
+.faq-cta-subtitle {
   font-family: 'Roboto Flex', sans-serif;
   font-weight: 300;
   color: #5a2d54;
@@ -199,6 +150,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 5px 20px rgba(117, 59, 108, 0.3);
+  pointer-events: auto;
 }
 
 .faq-contact-btn:hover {
@@ -208,7 +160,7 @@
 
 /* Media Queries */
 @media (max-width: 768px) {
-  .faq-header h2 {
+  .faq-title {
     font-size: 2.2em;
   }
   
@@ -221,19 +173,23 @@
     padding: 20px;
   }
   
-  .faq-question h3 {
+  .faq-question-text {
     font-size: 1em;
   }
   
   .answer-content {
-    padding: 0 20px 20px 20px;
+    padding: 0 20px;
+  }
+  
+  .faq-answer-text {
+    padding: 0 0 20px 15px;
   }
   
   .faq-cta {
     padding: 30px 20px;
   }
   
-  .faq-cta h3 {
+  .faq-cta-title {
     font-size: 1.5em;
   }
 }
@@ -243,7 +199,7 @@
     padding: 4em 1em;
   }
   
-  .faq-header h2 {
+  .faq-title {
     font-size: 1.8em;
   }
   
@@ -251,13 +207,22 @@
     padding: 15px;
   }
   
-  .faq-question h3 {
+  .faq-question-text {
     font-size: 0.95em;
     padding-right: 15px;
   }
   
-  .answer-content p {
-    padding-left: 15px;
+  .answer-content {
+    padding: 0 15px;
+  }
+  
+  .faq-answer-text {
+    padding: 0 0 15px 12px;
     font-size: 0.95em;
+  }
+  
+  .faq-contact-btn {
+    padding: 12px 30px;
+    font-size: 1em;
   }
 }

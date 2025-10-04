@@ -1,6 +1,6 @@
 // components/PremiumCTA.jsx
 "use client"
-
+import React from 'react'
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import './CTA.css'

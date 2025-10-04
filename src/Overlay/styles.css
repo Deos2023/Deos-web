@@ -25,7 +25,7 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
 .brand {
@@ -1074,7 +1074,14 @@ footer {
   color: #5a2d54;
   font-size: 0.9em;
 }
-
+.section-faq,
+.section-services,
+.section-about,
+.section-why,
+.section-team,
+.section-contact {
+    pointer-events: auto !important;
+}
 /* Media Queries for Team Section */
 @media (min-width: 576px) {
   .team-grid {
